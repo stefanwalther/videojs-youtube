@@ -19,17 +19,19 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE. */
-/*global YT*/
+/*global define*/
 (function (root, factory) {
-  // if(typeof exports==='object' && typeof module!=='undefined') {
-  //   module.exports = factory(require('video.js'));
-  // } else if(typeof define === 'function' && define.amd) {
-  //   define(['videojs'], function(videojs){
-  //     return (root.Youtube = factory(videojs));
-  //   });
-  // } else {
-    root.Youtube = factory(root.videojs);
-  // }
+
+      if(typeof exports==='object' && typeof module!=='undefined') {
+        module.exports = factory(require('video.js'));
+      } else if(typeof define === 'function' && define.amd) {
+        define(['./../videojs.min'], function(videojs){
+          return (root.Youtube = factory(videojs));
+        });
+      } else {
+        root.Youtube = factory(root.videojs);
+      }
+  
 }(this, function(videojs) {
   'use strict';
 
